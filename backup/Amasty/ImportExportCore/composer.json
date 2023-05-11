@@ -1,0 +1,20 @@
+{
+    "name": "amasty\/module-import-export-core",
+    "description": "Import Export Core by Amasty",
+    "require": {
+        "php": ">=7.3"
+    },
+    "type": "magento2-module",
+    "version": "1.1.2",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\ImportExportCore\\": ""
+        }
+    }
+}

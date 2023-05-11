@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="amasty_import_cron_job" resource="default" engine="innodb" comment="amasty_import_cron_job">
+    <column xsi:type="int" name="job_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Job_id"/>
+    <column xsi:type="varchar" name="title" nullable="false" length="127" comment="Title"/>
+    <column xsi:type="varchar" name="entity_code" nullable="false" length="127" comment="Entity_code"/>
+    <column xsi:type="int" name="status" padding="11" unsigned="false" nullable="false" identity="false" comment="Status"/>
+    <column xsi:type="int" name="group" padding="11" unsigned="false" nullable="false" identity="false" comment="Group"/>
+    <column xsi:type="longblob" name="config" nullable="false" comment="Config"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="job_id"/>
+    </constraint>
+    <constraint xsi:type="unique" referenceId="AMASTY_IMPORT_CRON_JOB_JOB_ID">
+      <column name="job_id"/>
+    </constraint>
+  </table>
+  <table name="amasty_import_history" resource="default" engine="innodb" comment="amasty_import_history">
+    <column xsi:type="int" name="history_id" padding="10" unsigned="true" nullable="false" identity="true" comment="History_id"/>
+    <column xsi:type="varchar" name="entity_code" nullable="false" length="127" comment="Entity_code"/>
+    <column xsi:type="varchar" name="type" nullable="true" length="127" comment="Type"/>
+    <column xsi:type="int" name="job_id" padding="11" unsigned="false" nullable="true" identity="false" comment="Job_id"/>
+    <column xsi:type="varchar" name="name" nullable="true" length="127" comment="Name"/>
+    <column xsi:type="timestamp" name="started_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Started_at"/>
+    <column xsi:type="timestamp" name="finished_at" on_update="false" nullable="true" comment="Finished_at"/>
+    <column xsi:type="varchar" name="identity" nullable="false" length="127" comment="Identity"/>
+    <column xsi:type="varchar" name="status" nullable="false" length="127" comment="Status"/>
+    <column xsi:type="text" name="log" nullable="false" comment="Log"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="history_id"/>
+    </constraint>
+  </table>
+</schema>

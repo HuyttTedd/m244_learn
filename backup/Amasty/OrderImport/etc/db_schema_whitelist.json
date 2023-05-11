@@ -1,0 +1,18 @@
+{
+    "amasty_order_import_profile": {
+        "column": {
+            "id": true,
+            "name": true,
+            "created_at": true,
+            "updated_at": true,
+            "imported_at": true,
+            "serialized_config": true,
+            "source_type": true,
+            "execution_type": true,
+            "order_actions": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

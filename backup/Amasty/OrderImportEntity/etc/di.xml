@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\OrderImportEntity\Model\ResourceModel\Order\GridIndexer">
+        <arguments>
+            <argument name="orderGrid" xsi:type="object">Magento\Sales\Model\ResourceModel\Order\Grid</argument>
+            <argument name="relatedEntitiesGrids" xsi:type="array">
+                <item name="invoice" xsi:type="object">Magento\Sales\Model\ResourceModel\Order\Invoice\Grid</item>
+                <item name="creditmemo" xsi:type="object">CreditmemoGridAggregator</item>
+                <item name="shipment" xsi:type="object">ShipmentGridAggregator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Amasty\OrderImportEntity\Import\Validation\Utils\CustomStatusCheckApplier">
+        <arguments>
+            <argument name="checkers" xsi:type="array">
+                <item name="amasty_order_status" xsi:type="object">Amasty\OrderImportEntity\Import\Validation\Utils\CustomStatusChecker\OrderStatusChecker</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

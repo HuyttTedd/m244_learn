@@ -1,0 +1,18 @@
+<?php /** @var \Amasty\Blog\Block\Social $block */ ?>
+<?php if ($block->getButtonsCount()) : ?>
+    <div class="amblog-social-container" id="social">
+        <ul class="amblog-list">
+        <?php foreach ($block->getButtons() as $button) : ?>
+            <?php if ($block->getHasImage($button)) : ?>
+                <li class="amblog-icon -<?= $block->escapeHtml($button->getValue()); ?>">
+                    <a class="amblog-social"
+                       target="_blank"
+                       href="<?= $block->escapeUrl($block->getButtonUrl($button)); ?>"
+                       title="<?= $block->escapeHtml($button->getLabel()); ?>">
+                    </a>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

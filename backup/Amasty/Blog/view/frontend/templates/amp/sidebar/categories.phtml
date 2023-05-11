@@ -1,0 +1,16 @@
+<?php
+/** @var \Amasty\Blog\Block\Sidebar\Category $block */
+
+$treeHtml = $block->renderCategoriesTreeHtml();
+?>
+
+<?php if ($treeHtml): ?>
+    <div class="amblog-categories sidebar-item">
+        <div class="amblog-amp-title">
+            <?= $block->escapeHtml($block->getBlockHeader()); ?>
+        </div>
+        <ul class="categories item level-<?= /* @noEscape */ $block->getDefaultLevel(); ?>">
+            <?= /* @noEscape */ $treeHtml; ?>
+        </ul>
+    </div>
+<?php endif; ?>

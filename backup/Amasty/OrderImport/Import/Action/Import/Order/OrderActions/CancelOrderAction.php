@@ -1,0 +1,18 @@
+<?php
+declare(strict_types=1);
+
+namespace Amasty\OrderImport\Import\Action\Import\Order\OrderActions;
+
+use Amasty\OrderImport\Api\OrderActionInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+
+class CancelOrderAction implements OrderActionInterface
+{
+    public function execute(OrderInterface $order, array $actionData = []): void
+    {
+        if ($actionData['cancel_order_new'] && !$actionData['isNew']) {
+            return;
+        }
+        $order->cancel();
+    }
+}

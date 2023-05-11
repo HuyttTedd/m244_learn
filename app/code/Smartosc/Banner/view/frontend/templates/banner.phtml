@@ -1,0 +1,41 @@
+<?php
+use Magento\Framework\View\Element\Template;
+use Smartosc\Banner\ViewModel\BannerData;
+
+/**
+ * @var Template $block
+ * @var BannerData $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+if ($viewModel->getBannerOption()) {
+    $url = $viewModel->getBannerUrlForCurrentStore();
+} else {
+    $url = $viewModel->getSharedBannerUrl();
+}
+
+if ($viewModel->isEnabledBanner() && $url) {
+?>
+<p><a href="https://pos.tlscontact.com/dus_en/added-value-services" target="_blank">
+        <img id="banner-avs-step1-image" alt="Flexi Appointment - Keep My Passport - Express Courier Return"
+             title="Flexi Appointment - Keep My Passport - Express Courier Return"
+             src="<?= $url ?>" style="max-width:100%"/></a></p>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function () {
+            if ($('#select-avs').hasClass('completed')) {
+                $('#banner-avs-step1-image').hide();
+            }
+            else {
+                $('#banner-avs-step1-image').show();
+            }
+        });
+    })
+</script>
+
+<?php
+}
+?>

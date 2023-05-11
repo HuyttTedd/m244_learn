@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var $block Magento\Backend\Block\Template
+ * @var $escaper Magento\Framework\Escaper
+ * @var $summaryViewModel Amasty\Blog\ViewModel\SummaryViewModel
+ */
+
+$summaryViewModel = $block->getViewModel();
+?>
+<div class="amblog-summary">
+    <?= /** @noEscape  */ $summaryViewModel->getSummaryCmsBlockContent() ?>
+</div>

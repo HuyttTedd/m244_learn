@@ -1,0 +1,16 @@
+{
+    "amasty_cron_schedule": {
+        "column": {
+            "schedule_id": true,
+            "external_id": true,
+            "job_type": true,
+            "enabled": true,
+            "expression": true,
+            "serialized_extension_attributes": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_CRON_SCHEDULE_SCHEDULE_ID": true
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "amasty\/module-order-import-entity",
+    "description": "Order Import Entity by Amasty",
+    "require": {
+        "php": ">=7.3",
+        "amasty\/base": "*",
+        "amasty\/module-import-core": ">=1.5.3"
+    },
+    "type": "magento2-module",
+    "version": "1.2.1",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\OrderImportEntity\\": ""
+        }
+    }
+}

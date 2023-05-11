@@ -1,0 +1,9 @@
+<?php
+/** @var \Amasty\Blog\Block\Layout $block */
+?>
+
+<div class="amblog-blog-wrap mobile <?= /* @noEscape */ $block->getMobileLayoutCode(); ?>">
+    <?php foreach ($block->getMobileBlocks('content') as $alias) : ?>
+        <?= /* @noEscape */ $block->getContentBlockHtml($alias); ?>
+    <?php endforeach; ?>
+</div>

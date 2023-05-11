@@ -1,0 +1,27 @@
+{
+    "name": "amasty\/module-order-import",
+    "description": "Import Orders by Amasty",
+    "require": {
+        "php": ">=7.3",
+        "amasty\/base": ">=1.12.17",
+        "amasty\/module-order-import-entity": ">=1.2.1",
+        "amasty\/module-import-pro": ">=1.6.1",
+        "amasty\/cron-schedule-list": ">=1.0.6"
+    },
+    "suggest": {
+        "amasty\/module-order-import-mftf-3": "Install order-import-mftf-3 module to be able to run Order Import MFTF tests for Magento 2.4.0+ version"
+    },
+    "type": "magento2-module",
+    "version": "1.8.2",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\OrderImport\\": ""
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<?php
+/** @var Amasty\Blog\Block\Content\Post\Details $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$categories = $block->getCategories();
+$categoriesCount = $categories->count();
+$categoryNumber = 0;
+?>
+
+<?php if ($categoriesCount): ?>
+    <div class="amblog-wrap">
+        <span class="amblog-posted-in">
+            <?= $escaper->escapeHtml(__('Posted in: ')); ?>
+        </span>
+        <?php foreach ($categories as $key => $category): ?>
+            <?php $categoryNumber++; ?>
+            <a class="amblog-ref"
+               href="<?= $escaper->escapeUrl($category->getUrl()); ?>"
+               title="<?= $escaper->escapeHtml($category->getName()); ?>">
+                <?= $escaper->escapeHtml($category->getName()); ?></a>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

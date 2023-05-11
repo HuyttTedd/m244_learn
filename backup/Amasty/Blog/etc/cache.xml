@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="amasty_blog" translate="label,description" instance="Amasty\Blog\Model\Cache\Type\Blog">
+        <label>Amasty Blog</label>
+        <description>Amasty Blog layouts, configurations, etc.</description>
+    </type>
+</config>

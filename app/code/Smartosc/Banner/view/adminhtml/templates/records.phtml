@@ -1,0 +1,138 @@
+<?php
+
+use \Smartosc\Banner\Block\Adminhtml\Records;
+
+/**
+ *  Amasty reason list template
+ *
+ * @var Records $block
+ */
+
+$element = $block->getElement();
+$defaultConditionsData = $block->getDefaultConditions();
+$selectedConditionsData = $block->getSelectedConditions();
+$counter = 0;
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .record-wrapper {
+        background: #f1f1f1;
+        margin: 0 20px 0 0;
+        padding: 20px 15px;
+        display: block;
+        width: 600px;
+    }
+    .records-dragndrop-block .record-order {
+        position: relative;
+        display: block;
+    }
+    .records-dragndrop-block .record-item {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 10px 0;
+        border-bottom: 1px solid #fff;
+    }
+    .record-hidden {
+        display: none;
+    }
+
+    .record-legend {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+    }
+
+    .record-button {
+        background: transparent;
+        border: none;
+    }
+
+    .record-add-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        background: #e3e3e3;
+        font-weight: 600;
+        line-height: 1.36;
+        padding: 0.6rem 1em 0.6rem;
+    }
+
+    .img-preview {
+        width: 60px;
+        height: 50px;
+        background: white;
+    }
+    .img-preview img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<td class="record-label label">
+    <label>
+        <span <?= /* @noEscape */
+        $block->renderScopeLabel($element) ?>>
+            <?= $block->escapeHtml(__('Banner based on Website')); ?>
+        </span>
+    </label>
+</td>
+<td class="records-block records-dragndrop-block">
+    <div class="record-wrapper"
+         data-mage-init='{"bannerRecords":<?= /* @noEscape */
+         $block->getInitData() ?>}'>
+        <p class="record-legend">
+            <span class="title"><?= $block->escapeHtml(__('Website(s) ')) ?></span>
+            <span class="title"><?= $block->escapeHtml(__('Banner File ')) ?></span>
+            <span><?= $block->escapeHtml(__('Actions')) ?></span>
+        </p>
+        <!-- should be empty element to clear all items and save it-->
+        <input name="<?= $block->escapeHtmlAttr($block->getElement()->getName()); ?>"
+               type="text" class="record-hidden" value=""/>
+        <ul class="record-order" data-record-js="items">
+            <?php foreach ($selectedConditionsData as $condition): ?>
+                <li class="record-item" data-record-js="item">
+                    <label class="record-label record-field websites">
+                        <select
+                            name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::WEBSITE_IDS, $counter)); ?>"
+                        >
+                            <?php foreach ($defaultConditionsData[Records::WEBSITE_IDS] as $method => $methodName): ?>
+                                <option
+                                    value="<?= $block->escapeHtml($method) ?>" <?= ($method == $condition[Records::WEBSITE_IDS]) ? 'selected' : ''; ?>><?= $block->escapeHtml(__($methodName)) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+
+                    <label class="record-label record-field banner-file">
+                        <input name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::BANNER_FILE, $counter)); ?>"
+                               type="file"
+                               data-record-js="input"
+                        />
+                        <input name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::BANNER_FILE_NAME, $counter)); ?>"
+                               type="hidden"
+                               data-record-js="input"
+                               value="<?= $block->escapeHtml($condition[Records::BANNER_FILE]); ?>"
+                        />
+                    </label>
+                    <label class="record-label record-field img-preview">
+                        <img src="<?= $block->getImgUrl($condition[Records::BANNER_FILE] ?? '') ?>" alt="none-image" id="img-preview-<?= $counter ?>">
+                    </label>
+
+                    <button class="record-button -clear -delete"
+                            title="<?= $block->escapeHtml(__('Remove Item')); ?>"
+                            type="button"
+                            data-record-js="remove">
+                        <i class="fa fa-trash" style="font-size:23px;""></i>
+                    </button>
+                </li>
+                <?php $counter++ ?>
+            <?php endforeach ?>
+        </ul>
+        <button class="record-add-button"
+                title="<?= $block->escapeHtml(__('Add Item')); ?>"
+                type="button"
+                data-record-js="add">
+            <?= $block->escapeHtml(__('Add')); ?>
+        </button>
+    </div>
+</td>

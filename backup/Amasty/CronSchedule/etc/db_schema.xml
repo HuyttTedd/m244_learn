@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="amasty_cron_schedule" resource="default" engine="innodb" comment="amasty_cron_schedule">
+    <column xsi:type="int" name="schedule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Schedule_id"/>
+    <column xsi:type="int" name="external_id" padding="11" unsigned="false" nullable="false" identity="false" comment="External_id"/>
+    <column xsi:type="varchar" name="job_type" nullable="false" length="127" comment="Job_type"/>
+    <column xsi:type="boolean" name="enabled" nullable="false" comment="Enabled"/>
+    <column xsi:type="varchar" name="expression" nullable="false" length="127" comment="Expression"/>
+    <column xsi:type="text" name="serialized_extension_attributes" nullable="true" comment="Serialized_extension_attributes"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="schedule_id"/>
+    </constraint>
+    <constraint xsi:type="unique" referenceId="AMASTY_CRON_SCHEDULE_SCHEDULE_ID">
+      <column name="schedule_id"/>
+    </constraint>
+  </table>
+</schema>

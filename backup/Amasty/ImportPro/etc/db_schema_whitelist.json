@@ -1,0 +1,33 @@
+{
+    "amasty_import_cron_job": {
+        "column": {
+            "job_id": true,
+            "title": true,
+            "entity_code": true,
+            "status": true,
+            "group": true,
+            "config": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_IMPORT_CRON_JOB_JOB_ID": true
+        }
+    },
+    "amasty_import_history": {
+        "column": {
+            "history_id": true,
+            "entity_code": true,
+            "type": true,
+            "job_id": true,
+            "name": true,
+            "started_at": true,
+            "finished_at": true,
+            "identity": true,
+            "status": true,
+            "log": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

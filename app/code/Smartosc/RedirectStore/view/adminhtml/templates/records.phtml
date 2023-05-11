@@ -1,0 +1,92 @@
+<?php
+
+use Smartosc\RedirectStore\Block\Adminhtml\Config\Form\Field\Records;
+
+/**
+ *  Smartosc banner template
+ *
+ * @var Records $block
+ */
+
+$element = $block->getElement();
+$defaultData = $block->getDefaultRecords();
+$selectedData = $block->getSelectedRecords();
+$counter = 0;
+?>
+
+<td class="record-label label">
+    <label>
+        <span <?= /* @noEscape */
+        $block->renderScopeLabel($element) ?>>
+            <?= $block->escapeHtml(__('Banner based on Website')); ?>
+        </span>
+    </label>
+</td>
+<td class="records-block records-dragndrop-block">
+    <div class="record-wrapper"
+         data-mage-init='{"redirectRecords":<?= /* @noEscape */
+         $block->getInitData() ?>}'>
+        <p class="record-legend">
+            <span class="title"><?= $block->escapeHtml(__('Website(s)')) ?></span>
+            <span class="title visa-title"><?= $block->escapeHtml(__('Types')) ?></span>
+            <span class="title img-title"><?= $block->escapeHtml(__('Redirect URL')) ?></span>
+            <span><?= $block->escapeHtml(__('Actions')) ?></span>
+        </p>
+        <input name="<?= $block->escapeHtmlAttr($block->getElement()->getName()); ?>"
+               type="text" class="record-hidden" value=""/>
+        <ul class="record-order" data-record-js="items">
+            <?php foreach ($selectedData as $data): ?>
+                <li class="record-item" data-record-js="item">
+                    <label class="record-label record-field websites website-row">
+                        <select multiple class="validate-not-empty-field-redirect"
+                            name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::WEBSITE_IDS, $counter)); ?>[]"
+                        >
+                            <?php foreach ($defaultData[Records::WEBSITE_IDS] as $item): ?>
+                                <?php
+                                    $websiteIds = $data[Records::WEBSITE_IDS] ?? [];
+                                ?>
+                                <option value="<?= $block->escapeHtml($item['value']) ?>" class="sm-option-store"
+                                    <?= in_array($item['value'], $websiteIds) ? 'selected' : ''; ?>><?= $item['label'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+
+                    <label class="record-label record-field type type-row">
+                        <select
+                            name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::TYPE, $counter)) ?>"
+                        >
+                            <?php foreach ($defaultData[Records::TYPE] as $type): ?>
+                                <option
+                                    value="<?= $block->escapeHtml($type['value']) ?>" <?= $type['value'] === $data[Records::TYPE] ? 'selected' : ''; ?>><?= $block->escapeHtml(__($type['label'])) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+
+                    <label class="record-label record-field image-url">
+                        <input name="<?= $block->escapeHtmlAttr($block->getNamePrefix(Records::REDIRECT_URL, $counter)); ?>"
+                               type="text"
+                               data-record-js="input"
+                               placeholder="Insert the redirect link here"
+                               class="validate-url"
+                               value="<?= $data[Records::REDIRECT_URL] ?? '' ?>"
+                        />
+                    </label>
+
+                    <button class="record-button -clear -delete"
+                            title="<?= $block->escapeHtml(__('Remove Item')); ?>"
+                            type="button"
+                            data-record-js="remove">
+                        <i class="fa fa-trash" style="font-size:23px;""></i>
+                    </button>
+                </li>
+                <?php $counter++ ?>
+            <?php endforeach ?>
+        </ul>
+        <button class="record-add-button"
+                title="<?= $block->escapeHtml(__('Add Item')); ?>"
+                type="button"
+                data-record-js="add">
+            <?= $block->escapeHtml(__('Add')); ?>
+        </button>
+    </div>
+</td>

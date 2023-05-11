@@ -1,0 +1,93 @@
+@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
+.record-wrapper {
+    background: #f1f1f1;
+    margin: 0 20px 0 0;
+    padding: 20px 15px;
+    display: block;
+    width: 750px;
+}
+
+.records-dragndrop-block .record-order {
+    position: relative;
+    display: block;
+}
+
+.records-dragndrop-block .record-item {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+}
+
+.record-hidden {
+    display: none;
+}
+
+.record-legend {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.record-button {
+    background: transparent;
+    border: none;
+}
+
+.record-add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background: #e3e3e3;
+    font-weight: 600;
+    line-height: 1.36;
+    padding: 0.6rem 1em 0.6rem;
+}
+
+.visa-subtypes {
+    width: 30px;
+}
+
+.website-row {
+    width: 30% !important;
+}
+
+.website-row select {
+    height: 300px !important;
+    overflow-x: auto;
+}
+
+.type-row {
+    width: 16% !important;
+}
+
+.visa-subtype-row select {
+    overflow-x: auto;
+    height: 300px !important;
+}
+
+.image-url {
+    width: 31% !important;
+    text-align: center;
+}
+
+.img-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img-title {
+    margin-left: 25px;
+    padding-left: 50px;
+}
+
+.visa-title {
+    margin-left: 25px;
+    padding-left: 50px;
+}
+
+.sm-option-store {
+    font-weight: 600;
+}

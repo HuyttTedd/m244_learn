@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Smartosc_Banner::smartosc_banner"
+             module="Smartosc_Banner"
+             title="TLS Banner"
+             sortOrder="50"
+             resource="Smartosc_Banner::smartosc_banner"
+             parent="Magento_Backend::stores"/>
+        <add id="Smartosc_Banner::configuration"
+             title="Configuration"
+             module="Smartosc_Banner"
+             sortOrder="10"
+             action="adminhtml/system_config/edit/section/smartosc_banner"
+             resource="Smartosc_Banner::configuration"
+             parent="Smartosc_Banner::smartosc_banner"/>
+    </menu>
+</config>

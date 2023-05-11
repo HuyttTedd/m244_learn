@@ -1,0 +1,11 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\Image */
+/** @var $escaper \Magento\Framework\Escaper */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<div class="amcart-image-success product-image-container-<?= /* @noEscape */ $block->getProductId() ?>">
+    <img class="amcart-image"
+         src="<?= $escaper->escapeUrl($block->getImageUrl()) ?>"
+         alt="<?= $escaper->escapeHtmlAttr($block->getLabel()) ?>"/>
+</div>

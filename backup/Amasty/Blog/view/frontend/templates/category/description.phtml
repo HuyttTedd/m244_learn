@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Amasty\Blog\ViewModel\Category\Description $viewModel
+ * @var \Amasty\Blog\ViewModel\ContentPreparation\CompositePreparator $contentPreparation
+ */
+
+$viewModel = $block->getViewModel();
+$contentPreparation = $block->getContentPreparation();
+$description = $contentPreparation->prepare($viewModel->getCategoryDescription());
+?>
+
+<?php if ($description): ?>
+    <div class="amblog-category-description">
+        <?= /* @noEscape */ $description ?>
+    </div>
+<?php endif; ?>
